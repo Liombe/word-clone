@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function GuessInput({ guesses, setGuesses }) {
+function GuessInput({ guesses, setGuesses, isGameOver }) {
   const [guess, setGuess] = useState('');
 
   const handleOnChange = (e) => {
@@ -30,6 +30,7 @@ function GuessInput({ guesses, setGuesses }) {
         type="text"
         value={guess}
         onChange={handleOnChange}
+        disabled={isGameOver}
       />
     </form>
   );

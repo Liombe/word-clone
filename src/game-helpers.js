@@ -1,3 +1,5 @@
+import { NUM_OF_GUESSES_ALLOWED } from './constants';
+
 export function checkGuess(guess, answer) {
   if (!guess) {
     return null;
@@ -22,4 +24,16 @@ export function checkGuess(guess, answer) {
       status,
     };
   });
+}
+
+export function checkGameEndGameState(guesses, answer) {
+  if (guesses[guesses.length - 1] === answer) {
+    return [true, true];
+  }
+
+  if (guesses.length < NUM_OF_GUESSES_ALLOWED) {
+    return [false, false];
+  } else {
+    return [true, false];
+  }
 }
