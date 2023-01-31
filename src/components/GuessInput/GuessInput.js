@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-function GuessInput() {
+function GuessInput({ guesses, setGuesses }) {
   const [guess, setGuess] = useState('');
 
   const handleOnChange = (e) => {
     const nextGuess = e.target.value;
     if (nextGuess.length > 5) return;
-    setGuess(e.target.value.toUpperCase());
+    setGuess(nextGuess.toUpperCase());
   };
 
   const handleOnSubmit = (e) => {
@@ -17,8 +17,9 @@ function GuessInput() {
       return;
     }
 
-    console.log({ guess });
+    console.info({ guess });
     setGuess('');
+    setGuesses([...guesses, guess]);
   };
 
   return (
