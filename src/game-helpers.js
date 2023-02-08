@@ -26,6 +26,33 @@ export function checkGuess(guess, answer) {
   });
 }
 
+export function checkLetter(letter, guesses, answer) {
+  let status = '';
+  if (guesses.find((guess) => guess.includes(letter))) {
+    guesses.forEach((guess) => {
+      if (!guess.includes(letter)) return;
+
+      const checkedGuess = checkGuess(guess, answer);
+      const letterPositions = guess.split('').reduce((acc, char, index) => {
+        if (char === letter) acc.push(index);
+        return acc;
+      }, []);
+
+      letterPositions.forEach((position) => {
+        const { status: nextStatus } = checkedGuess[position];
+        if (
+          (status === '' && nextStatus) ||
+          (status === 'misplaced' && nextStatus === 'correct')
+        ) {
+          status = nextStatus;
+        }
+      });
+    });
+  }
+
+  return status;
+}
+
 export function checkGameEndGameState(guesses, answer) {
   if (guesses[guesses.length - 1] === answer) {
     return [true, true];

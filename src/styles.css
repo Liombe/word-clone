@@ -197,6 +197,31 @@ h1 {
   border: 0;
 }
 
+.keyboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.keyboard-row {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 3ch;
+  gap: 4px;
+}
+
+.key {
+  text-transform: uppercase;
+  background-color: var(--color-gray-900);
+  border-radius: 0.25em;
+  font-weight: bold;
+  font-size: 1rem;
+  width: auto;
+  border: 0;
+}
+
 /*
   Modal styles
 

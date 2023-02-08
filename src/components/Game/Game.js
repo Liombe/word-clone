@@ -6,6 +6,7 @@ import { checkGameEndGameState } from '../../game-helpers';
 import GuessInput from '../GuessInput';
 import GuessResults from '../GuessResults';
 import Banner from '../Banner';
+import Keyboard from '../Keyboard/Keyboard';
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
@@ -20,10 +21,12 @@ function Game() {
     <>
       <GuessResults guesses={guesses} answer={answer} />
       <GuessInput
+        answer={answer}
         guesses={guesses}
         setGuesses={setGuesses}
         isGameOver={isGameOver}
       />
+      <Keyboard answer={answer} guesses={guesses} />
       {isGameOver && (
         <Banner
           type={hasWon ? 'happy' : 'sad'}

@@ -6,7 +6,7 @@ function Guess({ guess = '     ', answer }) {
   return (
     <p key={guess} className="guess">
       {checkedGuess.map(({ letter, status }, index) => (
-        <span key={index} className={`cell ${status}`}>
+        <span key={index} className={`cell ${letter !== ' ' ? status : ''}`}>
           {letter}
         </span>
       ))}
