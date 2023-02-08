@@ -8,14 +8,19 @@ import GuessResults from '../GuessResults';
 import Banner from '../Banner';
 import Keyboard from '../Keyboard/Keyboard';
 
-// Pick a random word on every pageload.
-const answer = sample(WORDS);
-// To make debugging easier, we'll log the solution in the console.
-console.info({ answer });
-
 function Game() {
+  // Pick a random word on every pageload.
+  const [answer, setAnswer] = useState(sample(WORDS));
   const [guesses, setGuesses] = useState([]);
   const [isGameOver, hasWon] = checkGameEndGameState(guesses, answer);
+
+  // To make debugging easier, we'll log the solution in the console.
+  console.info({ answer });
+
+  function restartGame() {
+    setAnswer(sample(WORDS));
+    setGuesses([]);
+  }
 
   return (
     <>
@@ -32,6 +37,7 @@ function Game() {
           type={hasWon ? 'happy' : 'sad'}
           guesses={guesses}
           answer={answer}
+          onRestart={restartGame}
         />
       )}
     </>

@@ -17,7 +17,6 @@ function GuessInput({ guesses, setGuesses, isGameOver }) {
       return;
     }
 
-    console.info({ guess });
     setGuess('');
     setGuesses([...guesses, guess]);
   };
@@ -31,6 +30,7 @@ function GuessInput({ guesses, setGuesses, isGameOver }) {
         value={guess}
         onChange={handleOnChange}
         disabled={isGameOver}
+        autoFocus
       />
     </form>
   );

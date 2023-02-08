@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Banner({ type, guesses, answer }) {
+function Banner({ type, guesses, answer, onRestart }) {
   return (
     <div className={`${type} banner`}>
       {type === 'happy' && (
@@ -14,6 +14,9 @@ function Banner({ type, guesses, answer }) {
           Sorry, the correct answer is <strong>{answer}</strong>.
         </p>
       )}
+      <button className="banner-restart" onClick={onRestart}>
+        Restart Game
+      </button>
     </div>
   );
 }
